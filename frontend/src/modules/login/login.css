@@ -1,8 +1,7 @@
-/* ======== CONTENEDOR PRINCIPAL ======== */
 .main-container {
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
 }
 
 /* ======== LADO IZQUIERDO (LOGIN) ======== */
@@ -112,7 +111,7 @@
 /* ======== LADO DERECHO (IMAGEN) ======== */
 .right-side {
   width: 65%;
-  height: 100vh;
+  height: 80vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
