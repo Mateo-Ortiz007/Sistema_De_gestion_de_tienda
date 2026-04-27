@@ -45,7 +45,7 @@
 .linea {
   flex: 1;
   height: 1px;
-  background-color: #ccc;
+  background-color: #000000;
   border: none;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .login-content button:hover {
-  background-color: #005f73;
+  background-color: #17af03;
   cursor: pointer;
 }
 
