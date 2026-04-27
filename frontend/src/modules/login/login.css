@@ -1,118 +1,209 @@
+/* Tokens locales — misma paleta; la imagen sigue definida solo en JSX */
+:root {
+  --login-bg: #ffffff;
+  --login-text: #1a1a1a;
+  --login-muted: #6b7280;
+  --login-border: #e5e7eb;
+  --login-input-focus: #007bff;
+  --login-btn-primary: #93d9e6;
+  --login-btn-primary-hover: #17af03;
+  --login-btn-register: #5bb7c6;
+  --login-btn-register-hover: #00758a;
+  --login-error: #dc2626;
+  --login-radius: 10px;
+  --login-radius-btn: 8px;
+  --login-shadow-soft: 0 1px 3px rgb(0 0 0 / 0.06), 0 10px 28px rgb(0 0 0 / 0.06);
+}
+
 .main-container {
   display: flex;
   width: 100%;
+  min-height: 80vh;
   height: 80vh;
+  align-items: stretch;
+  box-sizing: border-box;
 }
 
 /* ======== LADO IZQUIERDO (LOGIN) ======== */
 .login {
   width: 35%;
+  min-width: min(100%, 320px);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
-  border: 2px #000;
+  padding: clamp(24px, 4vw, 48px);
+  background-color: var(--login-bg);
+  border-right: 1px solid var(--login-border);
+  box-shadow: var(--login-shadow-soft);
 }
 
 /* ======== CONTENIDO DEL LOGIN ======== */
 .login-content {
   display: flex;
   flex-direction: column;
+  gap: 0;
   width: 100%;
   max-width: 380px;
   text-align: center;
 }
 
+.login-content > label:first-of-type {
+  margin-top: 8px;
+}
+
 /* TITULOS */
 .login-content h2 {
-  font-size: 25px;
-  color: #000;
+  font-size: clamp(22px, 2.5vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--login-text);
   margin-top: 20px;
+  margin-bottom: 0;
+  line-height: 1.25;
 }
 
 .h2-login {
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-.linea-container {
-  display: flex;
-  justify-content: center; /* centra horizontalmente */
-  align-items: center; /* opcional, centra verticalmente si hay altura */
-  margin: 20px 0;
-}
-
-/* LINEA */
-.linea {
-  flex: 1;
-  height: 1px;
-  color: #000;
-  border: none;
+  margin-top: 20px;
+  margin-bottom: 16px;
+  font-weight: 600;
 }
 
 /* LABELS */
 .login-content label {
+  display: block;
   text-align: left;
-  margin-bottom: 6px;
-  font-size: 16px;
-  color: #000;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--login-text);
 }
 
 /* INPUTS */
 .login-content input {
   font-size: 15px;
-  padding: 10px;
-  border-radius: 7px;
-  border: 1px solid #ccc;
+  padding: 12px 14px;
+  border-radius: var(--login-radius);
+  border: 1px solid var(--login-border);
   outline: none;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  background-color: #fafafa;
+  color: var(--login-text);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.login-content input::placeholder {
+  color: var(--login-muted);
+}
+
+.login-content input:hover {
+  border-color: #d1d5db;
 }
 
 .login-content input:focus {
-  border-color: #007bff;
+  border-color: var(--login-input-focus);
+  background-color: var(--login-bg);
+  box-shadow: 0 0 0 3px rgb(0 123 255 / 0.18);
+}
+
+.login-content input:focus-visible {
+  outline: none;
 }
 
 /* BOTON LOGIN */
 .login-content button {
-  background-color: #93d9e6;
+  background-color: var(--login-btn-primary);
   font-size: 16px;
-  padding: 10px;
+  padding: 12px 16px;
   width: 100%;
   color: #fff;
-  font-weight: bold;
+  font-weight: 700;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--login-radius-btn);
   margin-top: 15px;
-  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.25s ease;
 }
 
 .login-content button:hover {
-  background-color: #17af03;
-  cursor: pointer;
+  background-color: var(--login-btn-primary-hover);
+}
+
+.login-content button:active {
+  transform: translateY(1px);
+}
+
+.login-content button:focus-visible {
+  outline: 2px solid var(--login-input-focus);
+  outline-offset: 3px;
 }
 
 /* BOTON REGISTER */
 .register {
-  background-color: #5bb7c6 !important;
+  background-color: var(--login-btn-register) !important;
 }
 
 .register:hover {
-  background-color: #00758a !important;
+  background-color: var(--login-btn-register-hover) !important;
 }
 
 /* ERRORES */
 .error {
-  color: red;
+  color: var(--login-error);
   font-size: 13px;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  line-height: 1.4;
+  margin-top: -8px;
+  margin-bottom: 12px;
+  text-align: left;
 }
 
-/* ======== LADO DERECHO (IMAGEN) ======== */
+/* ======== LADO DERECHO (IMAGEN) — misma foto vía inline style en JSX ======== */
 .right-side {
   width: 65%;
   height: 80vh;
+  min-height: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .login {
+    width: 100%;
+    min-width: unset;
+    border-right: none;
+    border-bottom: 1px solid var(--login-border);
+    padding: 32px 24px;
+  }
+
+  .right-side {
+    width: 100%;
+    height: 220px;
+    min-height: 180px;
+    flex-shrink: 0;
+    background-position: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-content input,
+  .login-content button {
+    transition: none;
+  }
+
+  .login-content button:active {
+    transform: none;
+  }
 }

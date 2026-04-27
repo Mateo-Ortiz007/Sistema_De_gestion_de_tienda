@@ -1,11 +1,9 @@
-/* ====== RESETEO GLOBAL ====== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ====== BODY ====== */
 html,
 body,
 #root {
@@ -21,20 +19,17 @@ body,
   );
 }
 
-/* ====== LAYOUT PRINCIPAL ====== */
 .app-layout {
   display: flex;
   width: 100%;
-  height: 100vh; /* correcto aquí */
+  height: 100vh;
 }
 
-/* ====== CONTENIDO PRINCIPAL ====== */
 .main-content {
   flex: 1;
   width: 100%;
-  overflow-y: auto; /* scroll sin romper nada */
-  overflow-x: hidden; /* evita barras horizontales */
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
-  /* NO height: 100vh (eso rompe layouts) */
 }

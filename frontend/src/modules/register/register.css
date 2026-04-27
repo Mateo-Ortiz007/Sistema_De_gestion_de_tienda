@@ -1,125 +1,237 @@
+/* Paleta alineada con login (solo colores; sin imágenes) */
+:root {
+  --primary-color: #93d9e6;
+  --primary-hover: #17af03;
+  --disabled-color: #9ca3af;
+  --text-dark: #1a1a1a;
+  --text-muted: #6b7280;
+  --bg-card: #ffffff;
+  --border-color: #e5e7eb;
+  --border-input-hover: #d1d5db;
+  --input-focus-ring: #007bff;
+  --shadow: 0 1px 3px rgb(0 0 0 / 0.06), 0 10px 28px rgb(0 0 0 / 0.06);
+  --shadow-btn-hover: 0 6px 18px rgb(23 175 3 / 0.28);
+  --spacing-xs: 6px;
+  --spacing-sm: 8px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 28px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 18px;
+}
+
 .container-main-register {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100%; /* reducido un 20% desde 1000px */
-  background: #020024;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
   background: linear-gradient(
-    265deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
+    160deg,
+    #eef9fb 0%,
+    #f7fdfd 45%,
+    #e4f5f8 100%
   );
-  gap: 10px;
+  gap: var(--spacing-md);
+  padding: clamp(16px, 4vw, 32px);
 }
 
-/* Caja del formulario */
 .container-register {
-  background-color: #eceeee;
-  padding: 20px; /* reducido de 30px un 20% */
-  border-radius: 20px; /* ligeramente más pequeño */
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  width: 650px;
+  background-color: var(--bg-card);
+  padding: clamp(var(--spacing-lg), 4vw, var(--spacing-xl));
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  width: 100%;
+  max-width: 640px;
   display: flex;
   flex-direction: column;
-  gap: 11px; /* reducido un 20% desde 15px */
-  opacity: 1;
-  margin-left: 20px;
-  height: 70vh;
+  gap: var(--spacing-md);
+  max-height: min(90vh, 820px);
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Título del formulario */
 .container-register h2 {
   text-align: center;
-  color: #000000;
-  margin-bottom: 8px; /* reducido un 20% desde 10px */
-  font-size: 18px;
-  font-weight: 800; /* ligeramente más pequeño */
+  color: var(--text-dark);
+  margin: 0 0 var(--spacing-xs);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
-/* Inputs y select */
 .container-register input,
 .container-register select {
-  padding: 8px; /* reducido un 20% desde 10px */
-  border: 1px solid #ccc;
-  border-radius: 12px; /* reducido un 20% desde 8px */
-  font-size: 12px; /* reducido un 20% desde 14px */
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-size: 15px;
+  color: var(--text-dark);
+  background-color: #fafafa;
   outline: none;
-  transition: border-color 0.2s;
-  width: 90%;
-  margin-left: 15px;
-  margin-top: 25px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container-register select {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.container-register input::placeholder {
+  color: var(--text-muted);
+}
+
+.container-register input:hover,
+.container-register select:hover {
+  border-color: var(--border-input-hover);
 }
 
 .container-register input:focus,
 .container-register select:focus {
-  border-color: #007bff;
+  border-color: var(--input-focus-ring);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgb(0 123 255 / 0.18);
 }
 
-/* Botón */
+.container-register input:focus-visible,
+.container-register select:focus-visible {
+  outline: none;
+}
+
 .container-register button {
-  padding: 8px; /* reducido un 20% desde 10px */
-  background-color: #007bff;
+  padding: 12px 20px;
+  background-color: var(--primary-color);
   color: #fff;
-  font-size: 13px; /* reducido un 20% desde 16px */
+  font-size: 15px;
+  font-weight: 700;
   border: none;
-  border-radius: 6px; /* reducido un 20% desde 8px */
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
-  transition: background-color 0.2s;
-  margin-top: 20px;
-  width: 100px;
-  margin-left: 275px;
+  transition:
+    background-color 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.25s ease;
+  margin-top: var(--spacing-md);
+  width: 100%;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .container-register button:hover {
-  background-color: #0056b3;
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn-hover);
+}
+
+.container-register button:active {
+  transform: translateY(0);
+}
+
+.container-register button:focus-visible {
+  outline: 2px solid var(--input-focus-ring);
+  outline-offset: 3px;
 }
 
 .container-register button:disabled {
-  background-color: #aaa;
+  background-color: var(--disabled-color);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .input-label {
-  color: #000;
-  font-size: 12px; /* reducido un 20% desde 15px */
-  margin-left: 8px; /* reducido un 20% desde 15px */
-  margin-top: 12px; /* reducido un 20% desde 20px */
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-left: 18px;
+  color: var(--text-dark);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  margin: 0;
 }
 
 .linea-container {
   display: flex;
-  justify-content: center; /* centra horizontalmente */
-  align-items: center; /* opcional, centra verticalmente si hay altura */
+  justify-content: center;
+  align-items: center;
+  margin: 4px 0 8px;
 }
+
 .linea {
-  border: none; /* elimina el borde por defecto */
-  height: 2px; /* grosor de la línea */
-  background-color: #000000; /* color de la línea */
-  margin: 10px 0; /* espacio arriba y abajo */
-  width: 175px;
+  border: none;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(91 183 198 / 0.55),
+    transparent
+  );
+  width: min(200px, 50%);
+}
+
+.row {
   display: flex;
+  gap: var(--spacing-lg);
+  margin-bottom: 0;
+  align-items: flex-start;
 }
 
 .row > div {
   flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-/* FILAS PARA ORGANIZAR INPUTS */
-.row {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 15px;
+  min-width: 0;
 }
 
 .col {
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .container-register {
+    width: 100%;
+    max-height: none;
+    min-height: unset;
+    padding: var(--spacing-lg);
+  }
+
+  .row {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .container-register button {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container-register input,
+  .container-register select,
+  .container-register button {
+    transition: none;
+  }
+
+  .container-register button:hover,
+  .container-register button:active {
+    transform: none;
+  }
 }

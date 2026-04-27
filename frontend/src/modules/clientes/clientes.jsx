@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./clientes.css"; // archivo de estilos específico
+import "./clientes.css";
 
 function Clientes() {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -76,7 +76,7 @@ function Clientes() {
       .then((res) => res.json())
       .then((data) => {
         setClientes(
-          clientes.map((c) => (c.id === clienteToEdit.id ? data : c))
+          clientes.map((c) => (c.id === clienteToEdit.id ? data : c)),
         );
         setEditModalOpen(false);
         setClienteToEdit(null);

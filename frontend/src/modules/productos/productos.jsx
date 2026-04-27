@@ -111,7 +111,7 @@ function Productos() {
         );
 
   return (
-    <div className="products-main-container ">
+    <div className="products-main-container">
       <div className="products-container">
         <h1>Products</h1>
 

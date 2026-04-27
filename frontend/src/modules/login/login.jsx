@@ -29,8 +29,8 @@ function Login({ setIsAuthenticated }) {
       if (res.ok) {
         console.log("Login exitoso:", data);
         setError("");
-        setIsAuthenticated(true); // ✅ activa sesión
-        navigate("/productos"); // ✅ redirige al dashboard
+        setIsAuthenticated(true);
+        navigate("/productos");
       } else {
         setError(data.error || "Credenciales incorrectas");
       }
@@ -45,8 +45,7 @@ function Login({ setIsAuthenticated }) {
       <div className="login">
         <div className="login-content">
           <h2>SHOP STORE</h2>
-          <div className="linea-container"></div>
-          <hr className="linea" />
+          <div className="login-content"></div>
           <h2 className="h2-login">Login</h2>
 
           <label>Email</label>
