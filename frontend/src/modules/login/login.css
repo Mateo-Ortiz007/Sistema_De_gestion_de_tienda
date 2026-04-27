@@ -38,15 +38,15 @@
   display: flex;
   justify-content: center; /* centra horizontalmente */
   align-items: center; /* opcional, centra verticalmente si hay altura */
+  margin: 20px 0;
 }
 
 /* LINEA */
 .linea {
-  height: 2px;
-  background-color: #000;
-  width: 100%;
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
   border: none;
-  margin: 20px 0;
 }
 
 /* LABELS */
