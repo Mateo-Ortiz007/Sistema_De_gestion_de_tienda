@@ -31,22 +31,8 @@
 }
 
 .h2-login {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 20px;
-}
-.linea-container_login {
-  display: flex;
-  justify-content: center; /* centra horizontalmente */
-  align-items: center; /* opcional, centra verticalmente si hay altura */
-  margin: 20px 0;
-}
-
-/* LINEA */
-.linea_login {
-  flex: 1;
-  height: 1px;
-  background-color: #000;
-  border: none;
 }
 
 /* LABELS */

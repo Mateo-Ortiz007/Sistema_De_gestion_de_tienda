@@ -45,8 +45,7 @@ function Login({ setIsAuthenticated }) {
       <div className="login">
         <div className="login-content">
           <h2>SHOP STORE</h2>
-          <div className="linea-container_login"></div>
-          <hr className="linea_login" />
+          <div className="login-content"></div>
           <h2 className="h2-login">Login</h2>
 
           <label>Email</label>
