@@ -1,18 +1,23 @@
 :root {
   --primary-color: #007bff;
   --primary-hover: #0056b3;
-  --disabled-color: #aaa;
-  --text-dark: #000000;
-  --bg-light: #eceeee;
-  --border-color: #ccc;
-  --shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  --disabled-color: #9ca3af;
+  --text-dark: #1a1a1a;
+  --text-muted: #6b7280;
+  --bg-light: #f6f7f8;
+  --bg-card: #ffffff;
+  --border-color: #e5e7eb;
+  --border-input-hover: #d1d5db;
+  --shadow: 0 4px 14px rgb(0 0 0 / 0.08), 0 12px 40px rgb(0 0 0 / 0.06);
+  --shadow-btn-hover: 0 6px 16px rgb(0 86 179 / 0.35);
+  --spacing-xs: 6px;
   --spacing-sm: 8px;
   --spacing-md: 15px;
   --spacing-lg: 20px;
-  --border-radius-sm: 6px;
+  --spacing-xl: 28px;
+  --border-radius-sm: 8px;
   --border-radius-md: 12px;
-  --border-radius-lg: 20px;
-  overflow: hidden;
+  --border-radius-lg: 18px;
 }
 
 .container-main-register {
@@ -21,71 +26,104 @@
   align-items: center;
   min-height: 100vh;
   width: 100%;
+  box-sizing: border-box;
   background: linear-gradient(
-    265deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
+    155deg,
+    rgb(2 0 36) 0%,
+    rgb(18 18 130) 42%,
+    rgb(0 180 215) 100%
   );
-  gap: 10px;
-  padding: var(--spacing-lg);
+  gap: var(--spacing-md);
+  padding: clamp(16px, 4vw, 32px);
 }
 
 .container-register {
-  background-color: var(--bg-light);
-  padding: var(--spacing-lg);
+  background-color: var(--bg-card);
+  padding: clamp(var(--spacing-lg), 4vw, var(--spacing-xl));
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow);
+  border: 1px solid rgb(255 255 255 / 0.12);
   width: 100%;
-  max-width: 650px;
+  max-width: 640px;
   display: flex;
   flex-direction: column;
-  gap: 11px;
-  height: 70vh;
-  max-height: 800px;
-  overflow-y: none;
+  gap: var(--spacing-md);
+  max-height: min(90vh, 820px);
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .container-register h2 {
   text-align: center;
   color: var(--text-dark);
-  margin-bottom: var(--spacing-sm);
-  font-size: 22px;
+  margin: 0 0 var(--spacing-xs);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .container-register input,
 .container-register select {
-  padding: var(--spacing-sm);
+  padding: 12px 14px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   font-size: 15px;
+  color: var(--text-dark);
+  background-color: #fafafa;
   outline: none;
-  transition: all 0.3s ease;
-  width: calc(100% - 30px);
-  margin-left: var(--spacing-md);
-  margin-top: 25px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  width: 100%;
+  margin: 0;
   box-sizing: border-box;
+}
+
+.container-register select {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.container-register input::placeholder {
+  color: var(--text-muted);
+}
+
+.container-register input:hover,
+.container-register select:hover {
+  border-color: var(--border-input-hover);
 }
 
 .container-register input:focus,
 .container-register select:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgb(0 123 255 / 0.2);
+}
+
+.container-register input:focus-visible,
+.container-register select:focus-visible {
+  outline: none;
 }
 
 .container-register button {
-  padding: var(--spacing-sm);
+  padding: 12px 20px;
   background-color: var(--primary-color);
   color: #fff;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   border: none;
   border-radius: var(--border-radius-sm);
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: var(--spacing-lg);
-  width: 100px;
+  transition:
+    background-color 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.25s ease;
+  margin-top: var(--spacing-md);
+  width: 100%;
+  max-width: 280px;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -94,11 +132,16 @@
 .container-register button:hover {
   background-color: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-btn-hover);
 }
 
 .container-register button:active {
   transform: translateY(0);
+}
+
+.container-register button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 
 .container-register button:disabled {
@@ -110,60 +153,84 @@
 
 .input-label {
   color: var(--text-dark);
-  font-size: 15px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-left: 18px;
-  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  margin: 0;
 }
 
 .linea-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
+  margin: 4px 0 8px;
 }
 
 .linea {
   border: none;
   height: 2px;
-  background-color: var(--text-dark);
-  width: 175px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(0 123 255 / 0.45),
+    transparent
+  );
+  width: min(200px, 50%);
 }
 
 .row {
   display: flex;
   gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 0;
+  align-items: flex-start;
 }
 
 .row > div {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .col {
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
 }
 
 @media (max-width: 768px) {
   .container-register {
-    width: 95%;
-    height: auto;
-    min-height: 60vh;
-    padding: var(--spacing-md);
+    width: 100%;
+    max-height: none;
+    min-height: unset;
+    padding: var(--spacing-lg);
   }
 
   .row {
     flex-direction: column;
-    gap: 0;
+    gap: var(--spacing-md);
   }
 
   .container-register button {
-    width: 90%;
+    width: 100%;
+    max-width: none;
     margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container-register input,
+  .container-register select,
+  .container-register button {
+    transition: none;
+  }
+
+  .container-register button:hover,
+  .container-register button:active {
+    transform: none;
   }
 }
