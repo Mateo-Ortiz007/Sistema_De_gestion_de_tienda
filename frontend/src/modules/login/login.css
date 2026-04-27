@@ -45,7 +45,7 @@
 .linea {
   flex: 1;
   height: 1px;
-  background-color: #000000;
+  color: #000;
   border: none;
 }
 
