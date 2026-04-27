@@ -1,10 +1,25 @@
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --disabled-color: #aaa;
+  --text-dark: #000000;
+  --bg-light: #eceeee;
+  --border-color: #ccc;
+  --shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  --spacing-sm: 8px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --border-radius-sm: 6px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+}
+
 .container-main-register {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  background: #020024;
   background: linear-gradient(
     265deg,
     rgba(2, 0, 36, 1) 0%,
@@ -12,96 +27,113 @@
     rgba(0, 212, 255, 1) 100%
   );
   gap: 10px;
+  padding: var(--spacing-lg);
 }
 
-/* Caja del formulario */
 .container-register {
-  background-color: #eceeee;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  width: 650px;
+  background-color: var(--bg-light);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
   gap: 11px;
-  opacity: 1;
-  margin-left: 20px;
   height: 70vh;
+  max-height: 800px;
+  overflow-y: auto;
 }
 
 .container-register h2 {
   text-align: center;
-  color: #000000;
-  margin-bottom: 8px;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
   font-size: 18px;
   font-weight: 800;
 }
 
-/* Inputs y select */
 .container-register input,
 .container-register select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
   font-size: 15px;
   outline: none;
-  transition: border-color 0.2s;
-  width: 90%;
-  margin-left: 15px;
+  transition: all 0.3s ease;
+  width: calc(100% - 30px);
+  margin-left: var(--spacing-md);
   margin-top: 25px;
+  box-sizing: border-box;
 }
 
 .container-register input:focus,
 .container-register select:focus {
-  border-color: #007bff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
-/* Botón */
 .container-register button {
-  padding: 8px;
-  background-color: #007bff;
+  padding: var(--spacing-sm);
+  background-color: var(--primary-color);
   color: #fff;
   font-size: 13px;
+  font-weight: 600;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
-  transition: background-color 0.2s;
-  margin-top: 20px;
+  transition: all 0.3s ease;
+  margin-top: var(--spacing-lg);
   width: 100px;
-  margin-left: 275px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .container-register button:hover {
-  background-color: #0056b3;
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container-register button:active {
+  transform: translateY(0);
 }
 
 .container-register button:disabled {
-  background-color: #aaa;
+  background-color: var(--disabled-color);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .input-label {
-  color: #000;
+  color: var(--text-dark);
   font-size: 15px;
-  margin-left: 8px;
-  margin-top: 12px;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   margin-left: 18px;
+  margin-top: 12px;
 }
 
 .linea-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px 0;
 }
+
 .linea {
   border: none;
   height: 2px;
-  background-color: #000000;
-  margin: 10px 0;
+  background-color: var(--text-dark);
   width: 175px;
+}
+
+.row {
   display: flex;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
 }
 
 .row > div {
@@ -110,14 +142,27 @@
   flex-direction: column;
 }
 
-.row {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 15px;
-}
-
 .col {
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .container-register {
+    width: 95%;
+    height: auto;
+    min-height: 70vh;
+    padding: var(--spacing-md);
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .container-register button {
+    width: 100%;
+    margin-left: 0;
+  }
 }
