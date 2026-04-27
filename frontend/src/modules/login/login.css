@@ -34,7 +34,7 @@
   margin-top: 10px;
   margin-bottom: 20px;
 }
-.linea-container {
+.linea-container_login {
   display: flex;
   justify-content: center; /* centra horizontalmente */
   align-items: center; /* opcional, centra verticalmente si hay altura */
@@ -42,10 +42,10 @@
 }
 
 /* LINEA */
-.linea {
+.linea_login {
   flex: 1;
   height: 1px;
-  color: #000;
+  background-color: #000;
   border: none;
 }
 
