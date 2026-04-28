@@ -12,3 +12,40 @@ body,
   font-family: sans-serif;
   background-color: #fff;
 }
+
+.brand-logo {
+  font-size: clamp(26px, 3.2vw, 34px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  display: inline-block;
+  position: relative;
+  margin: 0 0 10px;
+  background: linear-gradient(90deg, #00758a, #5bb7c6, #93d9e6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 6px 18px rgb(0 117 138 / 0.12);
+}
+
+.brand-logo::after {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 62%;
+  margin: 10px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(91 183 198 / 0.55),
+    transparent
+  );
+}
+
+.brand-logo.brand-logo--sm {
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}

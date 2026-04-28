@@ -101,7 +101,7 @@ function Clientes() {
   return (
     <div className="clients-main-container">
       <div className="container-clients">
-        <h1>Clientes</h1>
+        <h1 className="brand-logo">Clientes</h1>
 
         <label className="label-clients"> Name</label>
         <input

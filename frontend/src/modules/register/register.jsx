@@ -60,7 +60,7 @@ function Registro() {
   return (
     <div className="container-main-register">
       <div className="container-register">
-        <h2>Register</h2>
+        <h2 className="brand-logo">Register</h2>
 
         <div className="linea-container">
           <hr className="linea" />

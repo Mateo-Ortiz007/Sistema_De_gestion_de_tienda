@@ -13,7 +13,7 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <h2>Panel</h2>
+      <h2 className="brand-logo brand-logo--sm">Panel</h2>
       <button onClick={() => navigate("/productos")}>🛒 Productos</button>
       <button onClick={() => navigate("/proveedores")}>📦 Proveedores</button>
       <button onClick={() => navigate("/clientes")}>👥 Clientes</button>

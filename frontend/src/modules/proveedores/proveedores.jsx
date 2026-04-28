@@ -102,7 +102,7 @@ function Proveedores() {
   return (
     <div className="proveedores-main-container">
       <div className="container-proveedores">
-      <h1>Suppliers</h1>
+      <h1 className="brand-logo">Suppliers</h1>
 
       <label className="Label-inputs">Brand</label>
       <input
