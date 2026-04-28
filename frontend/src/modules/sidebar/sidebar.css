@@ -57,7 +57,6 @@
   transform: none;
 }
 
-/* Modal overlay */
 .sidebar .modal-overlay {
   position: fixed;
   top: 0;
@@ -72,7 +71,6 @@
   animation: fadeIn 0.2s ease-in;
 }
 
-/* Modal box */
 .sidebar .modal {
   background: #f5f5f5;
   padding: 25px 30px;
@@ -83,11 +81,10 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  align-items: center; /* centra todo */
-  gap: 20px; /* espacio entre texto y botones */
+  align-items: center;
+  gap: 20px;
 }
 
-/* Texto del modal */
 .sidebar .modal h3 {
   margin: 0;
   color: #000000;
@@ -96,16 +93,15 @@
   text-align: center;
 }
 
-/* Botones del modal */
 .sidebar .modal-buttons {
   display: flex;
   justify-content: center;
-  gap: 5px; /* espacio entre botones */
+  gap: 5px;
   width: 100%;
 }
 
 .sidebar .modal-buttons button {
-  flex: 1; /* mismo ancho para los dos */
+  flex: 1;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -125,7 +121,6 @@
   padding: 5px 15px;
 }
 
-/* Animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;

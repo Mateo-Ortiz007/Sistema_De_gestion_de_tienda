@@ -104,7 +104,6 @@ function Proveedores() {
       <div className="container-proveedores">
       <h1>Suppliers</h1>
 
-      {/* Formulario agregar proveedor */}
       <label className="Label-inputs">Brand</label>
       <input
         type="text"
@@ -128,7 +127,6 @@ function Proveedores() {
       />
       <button onClick={addProvider}>Add</button>
 
-      {/* Lista de proveedores */}
       <ul>
         {proveedores.map((prov) => (
           <li key={prov.id}>
@@ -141,7 +139,6 @@ function Proveedores() {
         ))}
       </ul>
 
-      {/* Modal de edición */}
       {editedModalOpen && (
         <div className="modal-proveedores">
           <div className="modal-content-proveedores">
@@ -170,7 +167,6 @@ function Proveedores() {
         </div>
       )}
 
-      {/* Modal de confirmación de eliminación */}
       {deleteModalOpen && (
         <div className="modal-proveedores">
           <div className="modal-content-proveedores">

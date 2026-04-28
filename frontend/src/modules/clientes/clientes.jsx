@@ -19,7 +19,6 @@ function Clientes() {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [clienteToDelete, setClienteToDelete] = useState(null);
 
-  // Obtener clientes
   useEffect(() => {
     fetch(`${API_URL}/clientes`)
       .then((res) => res.json())
@@ -27,7 +26,6 @@ function Clientes() {
       .catch((err) => console.error("Error al obtener clientes:", err));
   }, []);
 
-  // Agregar cliente
   const addCliente = () => {
     if (!newNombre || !newApellido || !newEmail || !newContrasena) return;
 
@@ -51,7 +49,6 @@ function Clientes() {
     setNewContrasena("");
   };
 
-  // Abrir modal de edición
   const openEditModal = (cliente) => {
     setClienteToEdit(cliente);
     setNombreToEdit(cliente.nombre);
@@ -60,7 +57,6 @@ function Clientes() {
     setEditModalOpen(true);
   };
 
-  // Guardar cambios
   const saveEdit = () => {
     if (!clienteToEdit) return;
 
@@ -84,13 +80,11 @@ function Clientes() {
       .catch((err) => console.error("Error al actualizar cliente:", err));
   };
 
-  // Confirmar eliminación
   const confirmDelete = (cliente) => {
     setClienteToDelete(cliente);
     setDeleteModalOpen(true);
   };
 
-  // Eliminar cliente
   const deleteCliente = () => {
     if (!clienteToDelete) return;
 
@@ -133,7 +127,6 @@ function Clientes() {
 
         <button onClick={addCliente}>Agregar Cliente</button>
 
-        {/* Lista de clientes */}
         <ul>
           {clientes.map((cliente) => (
             <li key={cliente.id}>
@@ -144,7 +137,6 @@ function Clientes() {
           ))}
         </ul>
 
-        {/* Modal de edición */}
         {editModalOpen && (
           <div className="modal">
             <div className="modal-content">
@@ -170,7 +162,6 @@ function Clientes() {
           </div>
         )}
 
-        {/* Modal de confirmación de eliminación */}
         {deleteModalOpen && (
           <div className="modal">
             <div className="modal-content">

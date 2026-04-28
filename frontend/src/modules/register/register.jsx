@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // importamos useNavigate
+import { useNavigate } from "react-router-dom";
 import "./register.css";
 
 function Registro() {
   const API_URL = import.meta.env.VITE_API_URL;
-  const navigate = useNavigate(); // inicializamos el hook
+  const navigate = useNavigate();
 
   const [usuario, setUsuario] = useState([]);
   const [newNombreDeUsuario, setNewNombreDeUsuario] = useState("");
@@ -49,18 +49,16 @@ function Registro() {
       .then((res) => res.json())
       .then((data) => {
         setUsuario([...usuario, data]);
-        // Redirigir al login después de registrar
         navigate("/login");
       })
       .catch((err) => console.error("Error al agregar usuario", err));
 
-    // Limpiar inputs
     setNewEmail("");
     setNewContrasena("");
   };
 
   return (
-    <div className="container-main-register ">
+    <div className="container-main-register">
       <div className="container-register">
         <h2>Register</h2>
 
@@ -68,7 +66,6 @@ function Registro() {
           <hr className="linea" />
         </div>
 
-        {/* Row 1 */}
         <div className="row">
           <div className="col">
             <label className="input-label">Name</label>
@@ -91,7 +88,6 @@ function Registro() {
           </div>
         </div>
 
-        {/* Row 2 */}
         <div className="row">
           <div className="col">
             <label className="input-label">Document</label>
@@ -116,7 +112,6 @@ function Registro() {
           </div>
         </div>
 
-        {/* Row 3 — GENDER FULL WIDTH */}
         <div className="row">
           <div className="col" style={{ width: "100%" }}>
             <label className="input-label">Gender</label>
@@ -132,7 +127,6 @@ function Registro() {
           </div>
         </div>
 
-        {/* Row 4 — EMAIL + PASSWORD */}
         <div className="row">
           <div className="col">
             <label className="input-label">Email</label>

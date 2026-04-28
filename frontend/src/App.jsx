@@ -19,25 +19,20 @@ function App() {
 
   return (
     <div className="app-layout" style={{ display: "flex" }}>
-      {/* Mostrar sidebar solo si está autenticado y no está en login o registro */}
       {isAuthenticated &&
         !["/login", "/registro"].includes(location.pathname) && <Sidebar />}
 
       <div className="main-content" style={{ flex: 1 }}>
         <Routes>
-          {/* Redirigir / al login */}
           <Route path="/" element={<Navigate to="/login" />} />
 
-          {/* Login */}
           <Route
             path="/login"
             element={<Login setIsAuthenticated={setIsAuthenticated} />}
           />
 
-          {/* Registro */}
           <Route path="/registro" element={<Registro />} />
 
-          {/* Rutas protegidas */}
           <Route
             path="/productos"
             element={isAuthenticated ? <Productos /> : <Navigate to="/login" />}
@@ -53,7 +48,6 @@ function App() {
             element={isAuthenticated ? <Clientes /> : <Navigate to="/login" />}
           />
 
-          {/* Ruta 404 */}
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </div>
