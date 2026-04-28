@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState , useRef } from "react";
 import { FaFilter } from "react-icons/fa";
 import "./proveedores.css";
 
 function Proveedores() {
+  
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [proveedores, setProveedor] = useState([]);
@@ -20,12 +21,18 @@ function Proveedores() {
   const [proveedoresToEdit, setProveedoresToEdit] = useState(null);
   const [proveedortoDelete, setProveedoresToDelete] = useState(null);
 
-  useEffect(() => {
-    fetch(`${API_URL}/proveedores`)
-      .then((res) => res.json())
-      .then((data) => setProveedor(data))
-      .catch((err) => console.error("Error al obtener el proveedor", err));
-  }, []);
+  const fetched = useRef(false);
+
+useEffect(() => {
+  if (fetched.current) return;
+
+  fetched.current = true;
+
+  fetch(`${API_URL}/proveedores`)
+    .then((res) => res.json())
+    .then((data) => setProveedor(data))
+    .catch((err) => console.error("Error al obtener el proveedor", err));
+}, []);
 
   const addProvider = () => {
     if (!newMarca || !newTipoDeProductos || !newEmpresa) return;
@@ -223,9 +230,7 @@ function Proveedores() {
             <button onClick={deleteProvider}>Delete</button>
             <button onClick={() => setDeleteModalOpen(false)}>Cancel</button>
           </div>
-        </div>
-        
-        
+        </div>    
       )}
       </div>
     </div>
