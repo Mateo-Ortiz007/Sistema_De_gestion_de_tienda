@@ -12,6 +12,7 @@ function Proveedores() {
   const [marcaToEdit, setMarcaToEdit] = useState("");
   const [tipodeproductosToEdit, setTipoDeProductosToEdit] = useState("");
   const [empresaToEdit, setEmpresaToEdit] = useState("");
+  const [filtrado, setFiltrado] = useState("all");
 
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [editedModalOpen, setEditedModalOpen] = useState(false);
