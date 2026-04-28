@@ -98,6 +98,14 @@ function Proveedores() {
       })
       .catch((err) => console.error("Error al eliminar el proveedor", err));
   };
+  const filterProveedores =
+    filtrado === "all"
+      ? proveedores
+      : proveedores.filter(
+          (proveedor) =>
+            proveedor.tipo_de_productos &&
+            proveedor.tipo_de_productos.toLowerCase() === filtrado.toLowerCase()
+        );
 
   return (
     <div className="proveedores-main-container">
@@ -125,6 +133,8 @@ function Proveedores() {
         value={newEmpresa}
         onChange={(e) => setNewEmpresa(e.target.value)}
       />
+
+      
       <button onClick={addProvider}>Add</button>
 
       <ul>
@@ -153,7 +163,7 @@ function Proveedores() {
             <input
               type="text"
               value={tipodeproductosToEdit}
-              onChange={(e) => setTipoDeProductosToEdit(e.target.value)}
+              onChange={(e) => setTipoDeProductoToEdit(e.target.value)}
             />
             <label className="Label-inputs">Company</label>
             <input
@@ -180,7 +190,53 @@ function Proveedores() {
             <button onClick={() => setDeleteModalOpen(false)}>Cancel</button>
           </div>
         </div>
+        
+        
       )}
+      <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "10px",
+          }}
+        >
+          <FaFilter size={20} />
+          <select
+            onChange={(e) => setFiltrado(e.target.value)}
+            value={filtrado}
+          >
+            <option value="all">All</option>
+            {[...new Set(proveedores.map((p) => p.tipo_de_productos))].map((tipo) => (
+              <option key={tipo} value={tipo}>
+                {tipo}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <ul>
+          {filterProveedores.map((proveedor) => (
+            <li key={proveedor.id}>
+              {proveedor.marca} - {proveedor.tipo_de_productos} - {proveedor.empresa}
+              <small style={{ color: "#888", marginLeft: "10px" }}>
+                price:{proveedor.marca} $
+              </small>
+              <small style={{ color: "#888", marginLeft: "10px" }}>
+                price:{proveedor.empresa} $
+              </small>
+              <button className="lapiz" onClick={() => openEditModal(proveedor)}>
+                ✏️
+              </button>
+              <button
+                className="button-delete"
+                onClick={() => confirmDeleteProvider(proveedor)}
+              >
+                ❌
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

@@ -298,3 +298,29 @@
     transform: none;
   }
 }
+
+.container-proveedores li {
+  background: var(--app-card);
+  padding: 12px 15px;
+  border-radius: var(--app-radius-sm);
+  border: 1px solid var(--app-border);
+  border-left: 3px solid var(--app-border-accent);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.05);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.container-proveedores .lapiz {
+  background: transparent;
+  color: var(--app-text);
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  width: auto;
+  min-width: 44px;
+  padding: 8px 10px;
+  font-weight: 600;
+}
