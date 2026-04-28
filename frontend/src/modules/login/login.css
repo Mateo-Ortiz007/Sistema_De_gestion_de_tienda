@@ -58,6 +58,44 @@
   line-height: 1.25;
 }
 
+.brand-logo {
+  font-size: clamp(26px, 3.2vw, 34px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.05;
+  display: inline-block;
+  position: relative;
+  color: var(--login-btn-register-hover);
+  background: linear-gradient(
+    90deg,
+    var(--login-btn-register-hover),
+    var(--login-btn-register),
+    var(--login-btn-primary)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 6px 18px rgb(0 117 138 / 0.12);
+}
+
+.brand-logo::after {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 62%;
+  margin: 10px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(91 183 198 / 0.75),
+    transparent
+  );
+}
+
 .h2-login {
   margin-top: 20px;
   margin-bottom: 16px;
