@@ -171,12 +171,6 @@ useEffect(() => {
           {filterProveedores.map((proveedor) => (
             <li key={proveedor.id}>
               {proveedor.marca} - {proveedor.tipo_de_productos} - {proveedor.empresa}
-              <small style={{ color: "#888", marginLeft: "10px" }}>
-                brand:{proveedor.marca} $
-              </small>
-              <small style={{ color: "#888", marginLeft: "10px" }}>
-                company:{proveedor.empresa} $
-              </small>
               <button className="lapiz" onClick={() => openEditModal(proveedor)}>
                 ✏️
               </button>
