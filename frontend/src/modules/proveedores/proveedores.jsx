@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaFilter } from "react-icons/fa";
 import "./proveedores.css";
 
 function Proveedores() {
