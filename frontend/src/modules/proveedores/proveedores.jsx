@@ -100,7 +100,8 @@ function Proveedores() {
   };
 
   return (
-    <div className="container-proveedores">
+    <div className="proveedores-main-container">
+      <div className="container-proveedores">
       <h1>Suppliers</h1>
 
       {/* Formulario agregar proveedor */}
@@ -184,6 +185,7 @@ function Proveedores() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

@@ -1,164 +1,265 @@
-/* Contenedor principal */
+/* Tema alineado con login / registro */
+:root {
+  --app-text: #1a1a1a;
+  --app-muted: #6b7280;
+  --app-border: #e5e7eb;
+  --app-border-accent: #5bb7c6;
+  --app-focus: #007bff;
+  --app-bg-page: linear-gradient(160deg, #eef9fb 0%, #f7fdfd 45%, #e4f5f8 100%);
+  --app-card: #ffffff;
+  --app-shadow: 0 1px 3px rgb(0 0 0 / 0.06), 0 10px 28px rgb(0 0 0 / 0.06);
+  --app-btn: #93d9e6;
+  --app-btn-hover: #17af03;
+  --app-btn-secondary: #5bb7c6;
+  --app-btn-secondary-hover: #00758a;
+  --app-danger: #dc2626;
+  --app-danger-bg: #fef2f2;
+  --app-input-bg: #fafafa;
+  --app-radius: 10px;
+  --app-radius-sm: 8px;
+}
+
 .products-main-container {
-  background-color: coral;
+  background: var(--app-bg-page);
   min-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  padding: clamp(16px, 4vw, 32px);
 }
 
-/* Caja de contenido */
 .products-container {
   width: 90%;
   max-width: 800px;
-  padding: 30px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  padding: clamp(20px, 4vw, 30px);
+  background: var(--app-card);
+  border-radius: var(--app-radius);
+  box-shadow: var(--app-shadow);
+  border: 1px solid var(--app-border);
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border: 2px solid #000;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
-/* Título */
 .products-container h1 {
   text-align: center;
-  color: #333;
+  color: var(--app-text);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
 }
 
-/* Formulario */
 .products-container .form-group {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-/* Inputs */
 .products-container input[type="text"],
 .products-container input[type="date"],
 .products-container input[type="number"],
 .products-container select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  width: 100%; /* 🔥 cambia fijo por flexible */
+  padding: 12px 14px;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  width: 100%;
   box-sizing: border-box;
-}
-
-/* Botones */
-.products-container button {
-  padding: 10px 14px;
-  border: none;
-  border-radius: 6px;
-  background-color: rgb(223, 62, 13);
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
   font-size: 15px;
-  width: 150px;
+  color: var(--app-text);
+  background-color: var(--app-input-bg);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
 }
 
-.products-container .button-delete {
-  background-color: rgb(248, 248, 248);
-  color: #000;
-  font-size: 12px;
-  width: 60px;
+.products-container input:hover,
+.products-container select:hover {
+  border-color: #d1d5db;
+}
+
+.products-container input:focus,
+.products-container select:focus {
+  outline: none;
+  border-color: var(--app-focus);
+  background-color: var(--app-card);
+  box-shadow: 0 0 0 3px rgb(0 123 255 / 0.18);
+}
+
+.products-container button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: var(--app-radius-sm);
+  background-color: var(--app-btn);
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  width: 150px;
+  transition:
+    background-color 0.25s ease,
+    transform 0.15s ease;
 }
 
 .products-container button:hover {
-  background-color: #000000;
+  background-color: var(--app-btn-hover);
+}
+
+.products-container button:active {
+  transform: translateY(1px);
+}
+
+.products-container button:focus-visible {
+  outline: 2px solid var(--app-focus);
+  outline-offset: 3px;
+}
+
+.products-container .button-delete {
+  background-color: #f3f4f6;
+  color: var(--app-text);
+  font-size: 12px;
+  width: auto;
+  min-width: 44px;
+  padding: 8px 10px;
+  font-weight: 600;
+}
+
+.products-container .button-delete:hover {
+  background-color: var(--app-danger-bg);
+  color: var(--app-danger);
 }
 
 .products-container .lapiz:hover {
-  background-color: rgb(223, 62, 13);
+  background-color: rgb(147 217 230 / 0.2);
+  color: var(--app-border-accent);
 }
 
-/* Lista */
 .products-container ul {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .products-container li {
-  background: #fff;
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: 2px solid cadetblue;
+  background: var(--app-card);
+  padding: 12px 15px;
+  border-radius: var(--app-radius-sm);
+  border: 1px solid var(--app-border);
+  border-left: 3px solid var(--app-border-accent);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.05);
   flex-wrap: wrap;
   gap: 10px;
 }
 
-/* Lápiz */
 .products-container .lapiz {
   background: transparent;
-  color: #333;
+  color: var(--app-text);
   font-size: 16px;
   cursor: pointer;
   border: none;
-  width: 30px;
-  padding: 5px;
+  width: auto;
+  min-width: 44px;
+  padding: 8px 10px;
+  font-weight: 600;
 }
 
-/* Modal */
 .products-container .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  background: rgb(0 0 0 / 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .products-container .modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  width: 90%;
+  background: var(--app-card);
+  padding: 24px;
+  border-radius: var(--app-radius);
+  width: 100%;
   max-width: 400px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--app-shadow);
+  border: 1px solid var(--app-border);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+}
+
+.products-container .modal-content h2 {
+  margin: 0 0 8px;
+  color: var(--app-text);
+  font-size: 1.15rem;
 }
 
 .products-container .modal-content input {
   width: 100%;
-  padding: 6px 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  padding: 10px 12px;
+  border-radius: var(--app-radius-sm);
+  border: 1px solid var(--app-border);
   box-sizing: border-box;
-}
-
-/* Etiquetas */
-.label-products {
   font-size: 15px;
-  color: #000;
-  display: block;
+  background: var(--app-input-bg);
 }
 
-/* 📱 Responsividad */
+.products-container .modal-content input:focus {
+  outline: none;
+  border-color: var(--app-focus);
+  box-shadow: 0 0 0 3px rgb(0 123 255 / 0.18);
+}
+
+.products-container .modal-content button {
+  width: 100%;
+  max-width: none;
+}
+
+.products-container .modal-content button:last-of-type {
+  background-color: var(--app-btn-secondary);
+}
+
+.products-container .modal-content button:last-of-type:hover {
+  background-color: var(--app-btn-secondary-hover);
+}
+
+.products-container .modal-content p ~ button:first-of-type {
+  background-color: var(--app-danger);
+}
+
+.products-container .modal-content p ~ button:first-of-type:hover {
+  background-color: #b91c1c;
+}
+
+.label-products {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--app-text);
+  display: block;
+  text-align: left;
+}
+
 @media (max-width: 768px) {
   .products-container {
     padding: 20px;
+    width: 100%;
   }
 
   .products-container button {
-    width: 100%; /* botones apilan */
+    width: 100%;
+    max-width: none;
   }
 
   .products-container li {
@@ -175,5 +276,17 @@
   .products-container {
     border: none;
     box-shadow: none;
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .products-container button,
+  .products-container input {
+    transition: none;
+  }
+
+  .products-container button:active {
+    transform: none;
   }
 }
