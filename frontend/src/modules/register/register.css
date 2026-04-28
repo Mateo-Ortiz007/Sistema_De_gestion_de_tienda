@@ -1,15 +1,16 @@
+/* Paleta alineada con login (solo colores; sin imágenes) */
 :root {
-  --primary-color: #007bff;
-  --primary-hover: #0056b3;
+  --primary-color: #93d9e6;
+  --primary-hover: #17af03;
   --disabled-color: #9ca3af;
   --text-dark: #1a1a1a;
   --text-muted: #6b7280;
-  --bg-light: #f6f7f8;
   --bg-card: #ffffff;
   --border-color: #e5e7eb;
   --border-input-hover: #d1d5db;
-  --shadow: 0 4px 14px rgb(0 0 0 / 0.08), 0 12px 40px rgb(0 0 0 / 0.06);
-  --shadow-btn-hover: 0 6px 16px rgb(0 86 179 / 0.35);
+  --input-focus-ring: #007bff;
+  --shadow: 0 1px 3px rgb(0 0 0 / 0.06), 0 10px 28px rgb(0 0 0 / 0.06);
+  --shadow-btn-hover: 0 6px 18px rgb(23 175 3 / 0.28);
   --spacing-xs: 6px;
   --spacing-sm: 8px;
   --spacing-md: 15px;
@@ -28,10 +29,10 @@
   width: 100%;
   box-sizing: border-box;
   background: linear-gradient(
-    155deg,
-    rgb(2 0 36) 0%,
-    rgb(18 18 130) 42%,
-    rgb(0 180 215) 100%
+    160deg,
+    #eef9fb 0%,
+    #f7fdfd 45%,
+    #e4f5f8 100%
   );
   gap: var(--spacing-md);
   padding: clamp(16px, 4vw, 32px);
@@ -42,7 +43,7 @@
   padding: clamp(var(--spacing-lg), 4vw, var(--spacing-xl));
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow);
-  border: 1px solid rgb(255 255 255 / 0.12);
+  border: 1px solid var(--border-color);
   width: 100%;
   max-width: 640px;
   display: flex;
@@ -98,9 +99,9 @@
 
 .container-register input:focus,
 .container-register select:focus {
-  border-color: var(--primary-color);
+  border-color: var(--input-focus-ring);
   background-color: #fff;
-  box-shadow: 0 0 0 3px rgb(0 123 255 / 0.2);
+  box-shadow: 0 0 0 3px rgb(0 123 255 / 0.18);
 }
 
 .container-register input:focus-visible,
@@ -113,7 +114,7 @@
   background-color: var(--primary-color);
   color: #fff;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   border: none;
   border-radius: var(--border-radius-sm);
   cursor: pointer;
@@ -140,7 +141,7 @@
 }
 
 .container-register button:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--input-focus-ring);
   outline-offset: 3px;
 }
 
@@ -173,7 +174,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgb(0 123 255 / 0.45),
+    rgb(91 183 198 / 0.55),
     transparent
   );
   width: min(200px, 50%);
