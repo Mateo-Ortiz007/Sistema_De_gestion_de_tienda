@@ -48,7 +48,7 @@
   margin-top: 8px;
 }
 
-.login-content h2 {
+.login-content h2:not(.brand-logo) {
   font-size: clamp(22px, 2.5vw, 26px);
   font-weight: 700;
   letter-spacing: -0.02em;
