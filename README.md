@@ -1,1 +1,1 @@
-Enlace a Vercel : https://sistemadegestiondetienda.vercel.app
+Enlace a proyecto desplegado en Vercel : https://sistemadegestiondetienda.vercel.app
