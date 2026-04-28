@@ -138,18 +138,50 @@ function Proveedores() {
 
       
       <button onClick={addProvider}>Add</button>
+      <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "10px",
+          }}
+        >
+          <FaFilter size={20} />
+          <select
+            onChange={(e) => setFiltrado(e.target.value)}
+            value={filtrado}
+          >
+            <option value="all">All</option>
+            {[...new Set(proveedores.map((p) => p.tipo_de_productos))].map((tipo) => (
+              <option key={tipo} value={tipo}>
+                {tipo}
+              </option>
+            ))}
+          </select>
+        </div>
 
       <ul>
-        {proveedores.map((prov) => (
-          <li key={prov.id}>
-            {prov.marca} - {prov.tipo_de_productos} - {prov.empresa}
-            <button onClick={() => openEditModal(prov)}>Edit</button>
-            <button onClick={() => confirmDeleteProvider(prov)}>
-              Eliminar
-            </button>
-          </li>
-        ))}
-      </ul>
+          {filterProveedores.map((proveedor) => (
+            <li key={proveedor.id}>
+              {proveedor.marca} - {proveedor.tipo_de_productos} - {proveedor.empresa}
+              <small style={{ color: "#888", marginLeft: "10px" }}>
+                brand:{proveedor.marca} $
+              </small>
+              <small style={{ color: "#888", marginLeft: "10px" }}>
+                company:{proveedor.empresa} $
+              </small>
+              <button className="lapiz" onClick={() => openEditModal(proveedor)}>
+                ✏️
+              </button>
+              <button
+                className="button-delete"
+                onClick={() => confirmDeleteProvider(proveedor)}
+              >
+                ❌
+              </button>
+            </li>
+          ))}
+        </ul>
 
       {editedModalOpen && (
         <div className="modal-proveedores">
@@ -195,50 +227,6 @@ function Proveedores() {
         
         
       )}
-      <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "10px",
-          }}
-        >
-          <FaFilter size={20} />
-          <select
-            onChange={(e) => setFiltrado(e.target.value)}
-            value={filtrado}
-          >
-            <option value="all">All</option>
-            {[...new Set(proveedores.map((p) => p.tipo_de_productos))].map((tipo) => (
-              <option key={tipo} value={tipo}>
-                {tipo}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <ul>
-          {filterProveedores.map((proveedor) => (
-            <li key={proveedor.id}>
-              {proveedor.marca} - {proveedor.tipo_de_productos} - {proveedor.empresa}
-              <small style={{ color: "#888", marginLeft: "10px" }}>
-                price:{proveedor.marca} $
-              </small>
-              <small style={{ color: "#888", marginLeft: "10px" }}>
-                price:{proveedor.empresa} $
-              </small>
-              <button className="lapiz" onClick={() => openEditModal(proveedor)}>
-                ✏️
-              </button>
-              <button
-                className="button-delete"
-                onClick={() => confirmDeleteProvider(proveedor)}
-              >
-                ❌
-              </button>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
