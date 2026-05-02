@@ -138,5 +138,18 @@
   to {
     transform: scale(1);
     opacity: 1;
+
+
+    @media (max-width: 768px) { 
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+        animation: fadeIn 0.3s ease;
+      }
   }
+  
+}
 }
