@@ -113,7 +113,7 @@ function Productos() {
   return (
     <div className="products-main-container">
       <div className="products-container">
-        <h1>Products</h1>
+        <h1 className="brand-logo">Products</h1>
 
         <label className="label-products">Product</label>
 
@@ -209,9 +209,7 @@ function Productos() {
             value={filtrado}
           >
             <option value="all">All</option>
-            {[
-              ...new Set(productos.map((p) => p.tipo)), // tipos únicos
-            ].map((tipo) => (
+            {[...new Set(productos.map((p) => p.tipo))].map((tipo) => (
               <option key={tipo} value={tipo}>
                 {tipo}
               </option>

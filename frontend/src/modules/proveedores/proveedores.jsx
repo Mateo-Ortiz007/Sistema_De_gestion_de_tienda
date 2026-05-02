@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState , useRef } from "react";
+import { FaFilter } from "react-icons/fa";
 import "./proveedores.css";
 
 function Proveedores() {
+  
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [proveedores, setProveedor] = useState([]);
@@ -12,18 +14,25 @@ function Proveedores() {
   const [marcaToEdit, setMarcaToEdit] = useState("");
   const [tipodeproductosToEdit, setTipoDeProductosToEdit] = useState("");
   const [empresaToEdit, setEmpresaToEdit] = useState("");
+  const [filtrado, setFiltrado] = useState("all");
 
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [editedModalOpen, setEditedModalOpen] = useState(false);
   const [proveedoresToEdit, setProveedoresToEdit] = useState(null);
   const [proveedortoDelete, setProveedoresToDelete] = useState(null);
 
-  useEffect(() => {
-    fetch(`${API_URL}/proveedores`)
-      .then((res) => res.json())
-      .then((data) => setProveedor(data))
-      .catch((err) => console.error("Error al obtener el proveedor", err));
-  }, []);
+  const fetched = useRef(false);
+
+useEffect(() => {
+  if (fetched.current) return;
+
+  fetched.current = true;
+
+  fetch(`${API_URL}/proveedores`)
+    .then((res) => res.json())
+    .then((data) => setProveedor(data))
+    .catch((err) => console.error("Error al obtener el proveedor", err));
+}, []);
 
   const addProvider = () => {
     if (!newMarca || !newTipoDeProductos || !newEmpresa) return;
@@ -98,13 +107,20 @@ function Proveedores() {
       })
       .catch((err) => console.error("Error al eliminar el proveedor", err));
   };
+  const filterProveedores =
+    filtrado === "all"
+      ? proveedores
+      : proveedores.filter(
+          (proveedor) =>
+            proveedor.tipo_de_productos &&
+            proveedor.tipo_de_productos.toLowerCase() === filtrado.toLowerCase()
+        );
 
   return (
     <div className="proveedores-main-container">
       <div className="container-proveedores">
-      <h1>Suppliers</h1>
+      <h1 className="brand-logo">Suppliers</h1>
 
-      {/* Formulario agregar proveedor */}
       <label className="Label-inputs">Brand</label>
       <input
         type="text"
@@ -126,22 +142,48 @@ function Proveedores() {
         value={newEmpresa}
         onChange={(e) => setNewEmpresa(e.target.value)}
       />
+
+      
       <button onClick={addProvider}>Add</button>
+      <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "10px",
+          }}
+        >
+          <FaFilter size={20} />
+          <select
+            onChange={(e) => setFiltrado(e.target.value)}
+            value={filtrado}
+          >
+            <option value="all">All</option>
+            {[...new Set(proveedores.map((p) => p.tipo_de_productos))].map((tipo) => (
+              <option key={tipo} value={tipo}>
+                {tipo}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      {/* Lista de proveedores */}
       <ul>
-        {proveedores.map((prov) => (
-          <li key={prov.id}>
-            {prov.marca} - {prov.tipo_de_productos} - {prov.empresa}
-            <button onClick={() => openEditModal(prov)}>Edit</button>
-            <button onClick={() => confirmDeleteProvider(prov)}>
-              Eliminar
-            </button>
-          </li>
-        ))}
-      </ul>
+          {filterProveedores.map((proveedor) => (
+            <li key={proveedor.id}>
+              {proveedor.marca} - {proveedor.tipo_de_productos} - {proveedor.empresa}
+              <button className="lapiz" onClick={() => openEditModal(proveedor)}>
+                ✏️
+              </button>
+              <button
+                className="button-delete"
+                onClick={() => confirmDeleteProvider(proveedor)}
+              >
+                ❌
+              </button>
+            </li>
+          ))}
+        </ul>
 
-      {/* Modal de edición */}
       {editedModalOpen && (
         <div className="modal-proveedores">
           <div className="modal-content-proveedores">
@@ -156,7 +198,7 @@ function Proveedores() {
             <input
               type="text"
               value={tipodeproductosToEdit}
-              onChange={(e) => setTipoDeProductosToEdit(e.target.value)}
+              onChange={(e) => setTipoDeProductoToEdit(e.target.value)}
             />
             <label className="Label-inputs">Company</label>
             <input
@@ -170,7 +212,6 @@ function Proveedores() {
         </div>
       )}
 
-      {/* Modal de confirmación de eliminación */}
       {deleteModalOpen && (
         <div className="modal-proveedores">
           <div className="modal-content-proveedores">
@@ -183,7 +224,7 @@ function Proveedores() {
             <button onClick={deleteProvider}>Delete</button>
             <button onClick={() => setDeleteModalOpen(false)}>Cancel</button>
           </div>
-        </div>
+        </div>    
       )}
       </div>
     </div>

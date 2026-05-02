@@ -1,4 +1,3 @@
-/* Tokens locales — misma paleta; la imagen sigue definida solo en JSX */
 :root {
   --login-bg: #ffffff;
   --login-text: #1a1a1a;
@@ -24,7 +23,6 @@
   box-sizing: border-box;
 }
 
-/* ======== LADO IZQUIERDO (LOGIN) ======== */
 .login {
   width: 35%;
   min-width: min(100%, 320px);
@@ -37,7 +35,6 @@
   box-shadow: var(--login-shadow-soft);
 }
 
-/* ======== CONTENIDO DEL LOGIN ======== */
 .login-content {
   display: flex;
   flex-direction: column;
@@ -51,8 +48,7 @@
   margin-top: 8px;
 }
 
-/* TITULOS */
-.login-content h2 {
+.login-content h2:not(.brand-logo) {
   font-size: clamp(22px, 2.5vw, 26px);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -68,7 +64,6 @@
   font-weight: 600;
 }
 
-/* LABELS */
 .login-content label {
   display: block;
   text-align: left;
@@ -78,7 +73,6 @@
   color: var(--login-text);
 }
 
-/* INPUTS */
 .login-content input {
   font-size: 15px;
   padding: 12px 14px;
@@ -113,7 +107,6 @@
   outline: none;
 }
 
-/* BOTON LOGIN */
 .login-content button {
   background-color: var(--login-btn-primary);
   font-size: 16px;
@@ -144,7 +137,6 @@
   outline-offset: 3px;
 }
 
-/* BOTON REGISTER */
 .register {
   background-color: var(--login-btn-register) !important;
 }
@@ -153,7 +145,6 @@
   background-color: var(--login-btn-register-hover) !important;
 }
 
-/* ERRORES */
 .error {
   color: var(--login-error);
   font-size: 13px;
@@ -163,7 +154,6 @@
   text-align: left;
 }
 
-/* ======== LADO DERECHO (IMAGEN) — misma foto vía inline style en JSX ======== */
 .right-side {
   width: 65%;
   height: 80vh;
