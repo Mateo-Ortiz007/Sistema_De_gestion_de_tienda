@@ -120,6 +120,9 @@
   height: 35px;
   padding: 5px 15px;
 }
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
 
 @keyframes fadeIn {
   from {
